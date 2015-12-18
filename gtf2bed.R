@@ -40,12 +40,15 @@ for(i in 1:nrow(meta.exons)){
 	exon.lengths <- append(exon.lengths,as.character((meta.exons$V5[i]-meta.exons$V4[i])))
 
 	if(i == nrow(meta.exons)){
+		exon.starts = NULL
+		exon.lengths = NULL
 		exon.starts <- append(exon.starts,meta.exons$V4[i])
 		exon.lengths <- append(exon.lengths,as.character((meta.exons$V5[i]-meta.exons$V4[i])))
 		meta.exons$No.exons[i] <- as.character(length(exon.lengths))
 		meta.exons$exon.lengths[i]<- paste(as.character(exon.lengths),collapse=", ")
 		exon.starts<-exon.starts[-2]
 		meta.exons$exons.start[i] <- paste(as.character(exon.starts),collapse=", ")
+
 	}
 }
 }

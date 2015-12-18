@@ -38,7 +38,7 @@ for(i in 1:nrow(meta.exons)){
 	if(length(exon.starts) < 1){ exon.starts <- append(exon.starts,'0')}
 	exon.starts <- append(exon.starts,meta.exons$V4[i])
 	exon.lengths <- append(exon.lengths,as.character((meta.exons$V5[i]-meta.exons$V4[i])))
-
+	# for the last entry - (i-1 is invalid) so we hack.
 	if(i == nrow(meta.exons)){
 		exon.starts = NULL
 		exon.lengths = NULL
@@ -53,3 +53,6 @@ for(i in 1:nrow(meta.exons)){
 }
 }
 }
+
+meta.exons$blank=rep(0)
+meta.exons$blank2=rep(0)
